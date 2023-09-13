@@ -15,6 +15,8 @@ namespace Calculator
     {
         static void Main(string[] args)
         {
+            float result = 0;
+            float input1 = Convert.ToInt32(Console.ReadLine());
             /*
              * Pokud se budes chtit na neco zeptat a zrovna budu pomahat jinde, zkus se zeptat ChatGPT ;) - https://chat.openai.com/
              * 
