@@ -18,6 +18,7 @@ namespace Calculator
     {
         static void Main(string[] args)
         {
+            
             /*
              * ZADANI
              * Vytvor program ktery bude fungovat jako kalkulacka. Kroky programu budou nasledujici:
@@ -38,36 +39,7 @@ namespace Calculator
              * 3) Umozni uzivateli zadavat i desetinna cisla, tedy prekopej kalkulacku tak, aby umela pracovat s floaty
              */
             
-            
-   /*
-            int a;
-            double b;
-            double result =0;
-            Console.WriteLine("Zdravím počtáři, prosím, zadej první číslo!");
-            a = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Super a teď druhé");
-            b = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Tak a teď mi řekni co s tím obrovským kvantem dat chceš udělat. Na výběr máme: \n \n scitani (s)\n \n odcitani (o)\n \n nasobeni (n)\n \n deleni (d)\n");
-            char o = Convert.ToChar(Console.ReadLine());
-                if (o == 's')
-                {
-                    result = a + b;
-                }
-                else if (o == 'o')
-                {
-                    result = a - b;
-                }
-                else if (o == 'n')
-                {
-                    result = a * b;
-                }
-                else if (o == 'd')
-                {
-                result = a / b;
-                }
-            Console.WriteLine("No tak byla to fuška, ale výsledek je "+ result +".");
-            Console.ReadKey();
-            */    
+        
 
             int er = 0;
             double result =0;
@@ -108,7 +80,7 @@ namespace Calculator
                     Console.WriteLine("Hele to asi nebude číslo" + ", máš již " + er + "/3 povolených chyb.");
                 }
             }
-            Console.WriteLine("Tak a teď mi řekni co s tím obrovským kvantem dat chceš udělat. Na výběr máme: \n \n scitani (s)\n \n odcitani (o)\n \n nasobeni (n)\n \n deleni (d)\n\nčislo a na číslo b (m) \n");
+            Console.WriteLine("Tak a teď mi řekni co s tím obrovským kvantem dat chceš udělat. Na výběr máme: \n \n scitani (s)\n \n odcitani (o)\n \n nasobeni (n)\n \n deleni (d)\n\nčislo a na číslo b (m) \n\nodmocnina(w)\n \n odvěsna pravoúhlého trojuhelníku o stranách a, b (f)\n");
             while(er < 3)
             {
                 char o = Convert.ToChar(Console.ReadLine());
@@ -137,6 +109,15 @@ namespace Calculator
                     result = Math.Pow(a1,b1);
                     break;
                 }
+                else if (o == 'w')
+                {
+                    result = Math.Pow(a1,1/b1);
+                    break;
+                }
+                else if (o == 'f')
+                {
+
+                }
                 else
                 {
                     er++;
@@ -152,16 +133,6 @@ namespace Calculator
                 Console.WriteLine("S tebou se fakt nedá pracovat. Nazdar!");
             }
             Console.ReadKey();
-
-
-            /*Zdroje:
-            *https://textfac.es
-            *https://www.emoticonstext.com/sad.html
-            *https://codeeasy.io/lesson/input_validation
-            *https://stackoverflow.com/questions/48228494/how-to-check-if-the-value-of-string-variable-is-double
-            *https://www.techieclues.com/blogs/converting-strings-to-doubles-in-csharp
-            *https://www.includehelp.com/dot-net/methods-to-read-a-character-in-c-sharp.aspx
-            */
         }
     }
 }
