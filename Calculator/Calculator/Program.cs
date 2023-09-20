@@ -39,7 +39,7 @@ namespace Calculator
              */
             
             
-   
+   /*
             int a;
             double b;
             double result =0;
@@ -67,13 +67,8 @@ namespace Calculator
                 }
             Console.WriteLine("No tak byla to fuška, ale výsledek je "+ result +".");
             Console.ReadKey();
-                
-            
-            //To nahoře jsem napsal pouze s tím co jsem si pamatoval z hodin, k tomuhle mi pomohly zdroje vypsané níže :)
-            /*
-             * 
-             * 
-             * 
+            */    
+
             int er = 0;
             double result =0;
             double a1 =0;
@@ -113,7 +108,7 @@ namespace Calculator
                     Console.WriteLine("Hele to asi nebude číslo" + ", máš již " + er + "/3 povolených chyb.");
                 }
             }
-            Console.WriteLine("Tak a teď mi řekni co s tím obrovským kvantem dat chceš udělat. Na výběr máme: \n \n scitani (s)\n \n odcitani (o)\n \n nasobeni (n)\n \n deleni (d)\n");
+            Console.WriteLine("Tak a teď mi řekni co s tím obrovským kvantem dat chceš udělat. Na výběr máme: \n \n scitani (s)\n \n odcitani (o)\n \n nasobeni (n)\n \n deleni (d)\n\nčislo a na číslo b (m) \n");
             while(er < 3)
             {
                 char o = Convert.ToChar(Console.ReadLine());
@@ -135,6 +130,11 @@ namespace Calculator
                 else if (o == 'd')
                 {
                     result = a1 / b1;
+                    break;
+                }
+                else if (o == 'm')
+                {
+                    result = Math.Pow(a1,b1);
                     break;
                 }
                 else
