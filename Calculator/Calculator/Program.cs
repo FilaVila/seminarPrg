@@ -9,7 +9,7 @@ using System.Xml.Linq;
 
 /*
  * Made by Jan Borecky for PRG seminar at Gymnazium Voderadska, year 2023-2024.
- * Extended by students.
+ * Extended by Filip Viktor Čermák.
  */
 
 namespace Calculator
@@ -43,8 +43,8 @@ namespace Calculator
 
             int er = 0;
             double result =0;
-            double a1 =0;
-            double b1 =0;
+            double n1 =0;
+            double n2 =0;
             Console.WriteLine("Zdravím počtáři, prosím, zadej první číslo! (čárku za celým číslem ve svém vlastním zájmu piš takto , )");
             Console.WriteLine("A bacha počítám ti chyby <3");
             while (er <3)
@@ -54,7 +54,7 @@ namespace Calculator
             if (jeDouble)
             {
                 Console.WriteLine("ok píšu si... tvoje první číslo je "+ a);
-                a1 = double.Parse(a);
+                n1 = double.Parse(a);
                 break;
             }
             else
@@ -71,7 +71,7 @@ namespace Calculator
                 if (jeDouble2)
                 {
                     Console.WriteLine("zapsáno... tvoje druhé číslo je " + b);
-                    b1 = double.Parse(b);
+                    n2 = double.Parse(b);
                     break;
                 }
                 else
@@ -80,43 +80,39 @@ namespace Calculator
                     Console.WriteLine("Hele to asi nebude číslo" + ", máš již " + er + "/3 povolených chyb.");
                 }
             }
-            Console.WriteLine("Tak a teď mi řekni co s tím obrovským kvantem dat chceš udělat. Na výběr máme: \n \n scitani (s)\n \n odcitani (o)\n \n nasobeni (n)\n \n deleni (d)\n\nčislo a na číslo b (m) \n\nodmocnina(w)\n \n odvěsna pravoúhlého trojuhelníku o stranách a, b (f)\n");
+            Console.WriteLine("Tak a teď mi řekni co s tím obrovským kvantem dat chceš udělat. Na výběr máme: \n \n scitani (s)\n \n odcitani (o)\n \n nasobeni (n)\n \n deleni (d)\n\nčislo a na číslo b (m) \n\nodmocnina(w)\n");
             while(er < 3)
             {
                 char o = Convert.ToChar(Console.ReadLine());
                 if (o == 's')
                 {
-                    result = a1 + b1;
+                    result = n1 + n2;
                     break;   
                 }
                 else if (o == 'o')
                 {
-                    result= a1 - b1;
+                    result= n1 - n2;
                     break;
                 }
                 else if (o == 'n')
                 {
-                    result = a1 * b1;
+                    result = n1 * n2;
                     break;
                 }
                 else if (o == 'd')
                 {
-                    result = a1 / b1;
+                    result = n1 / n2;
                     break;
                 }
                 else if (o == 'm')
                 {
-                    result = Math.Pow(a1,b1);
+                    result = Math.Pow(n1,n2);
                     break;
                 }
                 else if (o == 'w')
                 {
-                    result = Math.Pow(a1,1/b1);
+                    result = Math.Pow(n1,1/n2);
                     break;
-                }
-                else if (o == 'f')
-                {
-
                 }
                 else
                 {
