@@ -16,6 +16,27 @@ namespace Calculator
 {
     internal class Program
     {
+        static int er = 0;
+
+        static float LoadNumber()
+        {
+            //nacteni vstupu
+            //nacteni vstupu
+            while(/*uzivatel zadal vstup spatne*/true)
+            {
+                //vynadam uzivateli a nactu znova
+                //er++;
+                //zavolam funkci eNDpROGRAM na ukonceni programu kdyz je er 3
+            }
+            return vstup;
+        }
+
+        static void EndProgram()
+        {
+            //vynada uzivateli
+            //ukonci program
+        }
+
         static void Main(string[] args)
         {
             
@@ -41,7 +62,6 @@ namespace Calculator
             
         
 
-            int er = 0;
             double result =0;
             double n1 =0;
             double n2 =0;
