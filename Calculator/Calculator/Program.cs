@@ -44,8 +44,8 @@ namespace Calculator
         static void EndProgram() //funkce ukončí program
         {
             Console.WriteLine("S tebou se fakt nedá pracovat. Nazdar!"); ;
-            Environment.Exit(0); // command ze stackoverflow
             Console.ReadKey();
+            Environment.Exit(0); // command ze stackoverflow
         }
 
         static void Main(string[] args)
@@ -62,7 +62,7 @@ namespace Calculator
             Console.WriteLine("Tak a teď mi řekni co s tím obrovským kvantem dat chceš udělat. Na výběr máme: \n \n scitani (s)\n \n odcitani (o)\n \n nasobeni (n)\n \n deleni (d)\n\nčislo a na číslo b (m) \n\nodmocnina(w)\n");
             
             char o = Convert.ToChar(Console.ReadLine()); //přečte vstup uživatele a metodou switch rozhodne co s n1 a n2 má udělat
-            switch (o)
+            switch (o) // '' pro zkopírování
             {
                 case 's':
                     result = n1 + n2;
@@ -74,16 +74,16 @@ namespace Calculator
                     result = n1 * n2;
                     break;
                 case 'd':
-                    if (n2 == 0)
+                    if (n2 == 0) //zkontroluje, aby uživatel nedělil nulou
                     { 
                      Console.WriteLine("tak to je naposledy co si zkusil dělit nulou!!!");
-                     Environment.Exit(0);
                      Console.ReadKey();
+                     Environment.Exit(0); //dělení nulou se neodpouští
                     }
-                     result = n1 / n2; // když jsem sem dal i else, tak to přestalo fungovat....netuším proč
+                     result = n1 / n2; // když jsem sem dal else, tak to přestalo fungovat
                      break; 
                 case 'm':
-                    result = (float)Math.Pow(n1, n2);
+                    result = (float)Math.Pow(n1, n2);//matematická oprace ze stackoverflow
                     break;
                 case 'w':
                     result = (float)Math.Pow(n1, 1 / n2); //(float) mi poradil přítel na telefonu a nebyl schopen mi vysvětlit proč to tam má být, ale když to tam není, tak to nefachá
@@ -95,15 +95,17 @@ namespace Calculator
                     break;
             }
             Console.WriteLine("No tak byla to fuška, ale výsledek je " + result + " a po cestě si udělal/a jen " + er + " chyb");
-            
-            
+
+
             /*Zdroje:
              * https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/statements/iteration-statements#the-while-statement
              * ChatGPT
              * https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/statements/selection-statements
              * https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/types/how-to-convert-a-string-to-a-number.
              * https://learn.microsoft.com/en-us/dotnet/api/system.console.readline?view=netframework-4.8.
-             * all mighty https://stackoverflow.com                       
+             * all mighty https://stackoverflow.com    
+             * https://code.visualstudio.com/docs/csharp/formatting-linting
+             * https://www.w3schools.com/cs/cs_switch.php
             */
 
             Console.ReadKey();
