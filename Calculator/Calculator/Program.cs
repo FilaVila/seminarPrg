@@ -18,136 +18,94 @@ namespace Calculator
     {
         static int er = 0;
 
-        static float LoadNumber()
+        static float LoadNumber()//funkce načte vstup a zkontroluje, jestli je to float
         {
-            //nacteni vstupu
-            //nacteni vstupu
-            while(/*uzivatel zadal vstup spatne*/true)
+            //se strukturou funkcí jsem si nechal poradit od ChatGPT
+            float vstup = 0;
+            while (true)
             {
-                //vynadam uzivateli a nactu znova
-                //er++;
-                //zavolam funkci eNDpROGRAM na ukonceni programu kdyz je er 3
-            }
-            return vstup;
+                string input = Console.ReadLine();
+                if (float.TryParse(input, out vstup))
+                {
+                    return vstup;
+                }
+                else
+                {
+                    er++;
+                    Console.WriteLine("Hele, jsem fakt dobrej, ale s tímhle fakt počítat neumím. Máš již " + er + "/3 povolených chyb.");
+                    if (er >= 3) //nahrazuje 3*while(er<3)
+                    {
+                        EndProgram();
+                        Console.ReadKey();
+                    }
+                }
+            }  
         }
-
-        static void EndProgram()
+        static void EndProgram() //funkce ukončí program
         {
-            //vynada uzivateli
-            //ukonci program
+            Console.WriteLine("S tebou se fakt nedá pracovat. Nazdar!"); ;
+            Environment.Exit(0); // command ze stackoverflow
+            Console.ReadKey();
         }
 
         static void Main(string[] args)
         {
-            
-            /*
-             * ZADANI
-             * Vytvor program ktery bude fungovat jako kalkulacka. Kroky programu budou nasledujici:
-             * 1) Nacte vstup pro prvni cislo od uzivatele (vyuzijte metodu Console.ReadLine() - https://learn.microsoft.com/en-us/dotnet/api/system.console.readline?view=netframework-4.8.
-             * 2) Zkonvertuje vstup od uzivatele ze stringu do integeru - https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/types/how-to-convert-a-string-to-a-number.
-             * 3) Nacte vstup pro druhe cislo od uzivatele a zkonvertuje ho do integeru. (zopakovani kroku 1 a 2 pro druhe cislo)
-             * 4) Nacte vstup pro ciselnou operaci. Rozmysli si, jak operace nazves. Muze to byt "soucet", "rozdil" atd. nebo napr "+", "-", nebo jakkoliv jinak.
-             * 5) Nadefinuj integerovou promennou result a prirad ji prozatimne hodnotu 0.
-             * 6) Vytvor podminky (if statement), podle kterych urcis, co se bude s cisly dit podle zadane operace
-             *    a proved danou operaci - https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/statements/selection-statements.
-             * 7) Vypis promennou result do konzole
-             * 
-             * Mozna rozsireni programu pro rychliky / na doma (na poradi nezalezi):
-             * 1) Vypis do konzole pred nactenim kazdeho uzivatelova vstupu co po nem chces
-             * 2) a) Kontroluj, ze uzivatel do vstupu zadal, co mel (cisla, popr. ciselnou operaci). Pokud zadal neco jineho, napis mu, co ma priste zadat a program ukoncete.
-             * 2) b) To same, co a) ale misto ukonceni programu opakovane cti vstup, dokud uzivatel nezada to, co ma
-             *       - https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/statements/iteration-statements#the-while-statement
-             * 3) Umozni uzivateli zadavat i desetinna cisla, tedy prekopej kalkulacku tak, aby umela pracovat s floaty
-             */
-            
-        
-
-            double result =0;
-            double n1 =0;
-            double n2 =0;
+            float result =0;
+            float n1 =0;  //number1
+            float n2 =0;  //number2 
             Console.WriteLine("Zdravím počtáři, prosím, zadej první číslo! (čárku za celým číslem ve svém vlastním zájmu piš takto , )");
-            Console.WriteLine("A bacha počítám ti chyby <3");
-            while (er <3)
-            {
-            string a = Console.ReadLine();
-            bool jeDouble = Double.TryParse(a, out double d);
-            if (jeDouble)
-            {
-                Console.WriteLine("ok píšu si... tvoje první číslo je "+ a);
-                n1 = double.Parse(a);
-                break;
-            }
-            else
-            {
-              er++;
-              Console.WriteLine("Hele to asi nebude číslo"+ ", máš již " + er + "/3 povolených chyb.");
-            }
-            }
-            Console.WriteLine("Uff, tak dobrá čtvrtina je za náma, teď zadej to druhý číslo");
-            while (er < 3)
-            {
-                string b = Console.ReadLine();
-                bool jeDouble2 = Double.TryParse(b, out double d);
-                if (jeDouble2)
-                {
-                    Console.WriteLine("zapsáno... tvoje druhé číslo je " + b);
-                    n2 = double.Parse(b);
-                    break;
-                }
-                else
-                {
-                    er++;
-                    Console.WriteLine("Hele to asi nebude číslo" + ", máš již " + er + "/3 povolených chyb.");
-                }
-            }
+            Console.WriteLine("A bacha počítám ti chyby <3 \ntak zadej první číslo");
+            n1 = LoadNumber();//"povolá" funkci LoadNumber
+            Console.WriteLine("ok píšu si... tvoje první číslo je "+ n1 + "\nUff, tak dobrá čtvrtina je za náma, teď zadej to druhý číslo");
+            n2 = LoadNumber();
+            Console.WriteLine("zapsáno... tvoje druhé číslo je " + n2);
             Console.WriteLine("Tak a teď mi řekni co s tím obrovským kvantem dat chceš udělat. Na výběr máme: \n \n scitani (s)\n \n odcitani (o)\n \n nasobeni (n)\n \n deleni (d)\n\nčislo a na číslo b (m) \n\nodmocnina(w)\n");
-            while(er < 3)
+            
+            char o = Convert.ToChar(Console.ReadLine()); //přečte vstup uživatele a metodou switch rozhodne co s n1 a n2 má udělat
+            switch (o)
             {
-                char o = Convert.ToChar(Console.ReadLine());
-                if (o == 's')
-                {
+                case 's':
                     result = n1 + n2;
-                    break;   
-                }
-                else if (o == 'o')
-                {
-                    result= n1 - n2;
                     break;
-                }
-                else if (o == 'n')
-                {
+                case 'o':
+                    result = n1 - n2;
+                    break;
+                case 'n':
                     result = n1 * n2;
                     break;
-                }
-                else if (o == 'd')
-                {
-                    result = n1 / n2;
+                case 'd':
+                    if (n2 == 0)
+                    { 
+                     Console.WriteLine("tak to je naposledy co si zkusil dělit nulou!!!");
+                     Environment.Exit(0);
+                     Console.ReadKey();
+                    }
+                     result = n1 / n2; // když jsem sem dal i else, tak to přestalo fungovat....netuším proč
+                     break; 
+                case 'm':
+                    result = (float)Math.Pow(n1, n2);
                     break;
-                }
-                else if (o == 'm')
-                {
-                    result = Math.Pow(n1,n2);
+                case 'w':
+                    result = (float)Math.Pow(n1, 1 / n2); //(float) mi poradil přítel na telefonu a nebyl schopen mi vysvětlit proč to tam má být, ale když to tam není, tak to nefachá
                     break;
-                }
-                else if (o == 'w')
-                {
-                    result = Math.Pow(n1,1/n2);
+                default:
+                    
+                    EndProgram();
+                    Console.WriteLine("navíc se není čemu divit, šance, že by si našel správnou klávesu byla jen 1/26.");
                     break;
-                }
-                else
-                {
-                    er++;
-                    Console.WriteLine("Není se čemu divit šance, že by si našel správnou klávesu byla jen 1/26. Btw už máš "+ er + "/3 chyb");
-                }
             }
-            if(er < 3)
-            {
-                Console.WriteLine("No tak byla to fuška, ale výsledek je " + result + " a po cestě si udělal/a jen " + er + " chyb");
-            }
-            else
-            {
-                Console.WriteLine("S tebou se fakt nedá pracovat. Nazdar!");
-            }
+            Console.WriteLine("No tak byla to fuška, ale výsledek je " + result + " a po cestě si udělal/a jen " + er + " chyb");
+            
+            
+            /*Zdroje:
+             * https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/statements/iteration-statements#the-while-statement
+             * ChatGPT
+             * https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/statements/selection-statements
+             * https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/types/how-to-convert-a-string-to-a-number.
+             * https://learn.microsoft.com/en-us/dotnet/api/system.console.readline?view=netframework-4.8.
+             * all mighty https://stackoverflow.com                       
+            */
+
             Console.ReadKey();
         }
     }
