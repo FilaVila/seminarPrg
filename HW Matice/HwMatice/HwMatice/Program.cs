@@ -28,7 +28,7 @@ namespace HwMatice
         static int[,] getArray()//funkce vrací v int[,]
         {
             Random rnd = new Random();
-            Console.WriteLine("Takže začneme tím, že vytvoříme matici a*b. Zadej prosím čísla a,b.");
+            Console.WriteLine("Zadej prosím čísla a,b.");
             int a = LoadNumber();
             int b = LoadNumber();
             int [,] HelpArray = new int[a,b];
@@ -141,13 +141,117 @@ namespace HwMatice
             }
             writeArray(Array);
         }
+
+        static void multiply(int[,]Array)
+        {
+            Console.WriteLine("Zadej číslo, kterým chceš celu matici vynásobit.\n");
+            int mul = LoadNumber(); //mul jako multiplier
+            for(int i = 0;i < Array.GetLength(0); i++)
+            {
+                for (int j = 0; j < Array.GetLength(0); j++)
+                {
+                    int storage = Array[i, j];
+                    Array[i, j] = storage * mul;
+                }
+            }
+            writeArray(Array);
+        }
+        //transpozice matice, převrátit podle hlavní diagonály (osová souměrnost), když je obdélníková matice, tak musím otočit poměry stran(obdélník položím atd)
+        static void onlyMultiply(int[,]Array) // násobí pouze jeden řádek nebo sloupec
+        {
+            Console.WriteLine("Zadej číslo, kterým chceš celý řádek/sloupec vynásobit.\n");
+            int mul = LoadNumber(); //multiplier
+            Console.WriteLine("Chceš násobit řádek nebo sloupec?\n r) řádek\n s) sloupec\n");
+            char o = Convert.ToChar(Console.ReadLine());
+            switch (o)
+            {
+                case 'r':
+
+                    Console.WriteLine("Zadej který řádek chceš vynásobit.\n");
+                    int numR = LoadNumber(); //číslo řádku
+                    for (int i = 0; i < Array.GetLength(0); i++)
+                    {
+                        int storage = Array[numR,i];
+                        Array[numR,i] = storage * mul;
+                    }
+                    writeArray(Array);
+                    break;
+                case 's':
+                    Console.WriteLine("Zadej který sloupec chceš vynásobit.\n");
+                    int numS = LoadNumber(); //číslo sloupce
+                    for (int j = 0; j < Array.GetLength(0); j++)
+                    {
+                        int storage = Array[j,numS];
+                        Array[j,numS] = storage * mul;
+                    }
+                    writeArray(Array);
+                    break;
+                default:
+                    Console.WriteLine("tvá odpověď nebyla v nabídce");
+                    EndProgram();
+                    break;
+            }
+        }
+        static void addition(int[,]Array)
+        {
+            Console.WriteLine("Prvně vytvoříme druhou matici se kterou budeme pracovat.\n");
+            int[,] Array2 = getArray();
+            if (Array.GetLength(0) != Array2.GetLength(0) || Array.GetLength(1) != Array2.GetLength(1))
+            {
+                Console.WriteLine("Matice nemají shodné rozměry, nelze je sečíst.");
+                EndProgram();
+            }
+            int[,] ArrayR = new int[Array.GetLength(0), Array.GetLength(1)]; //ArrayResult
+            for (int i = 0; i < ArrayR.GetLength(0); i++)
+            {
+                for (int j = 0; j < ArrayR.GetLength(1); j++)
+                {
+                    ArrayR[i, j] = Array[i, j] + Array2[i, j];
+                }
+            }
+            Console.WriteLine("\n\n");
+            writeArray(ArrayR );
+        }
+        static void subtraction(int[,]Array)
+        {
+            Console.WriteLine("Prvně vytvoříme druhou matici se kterou budeme pracovat.\n");
+            int[,] Array2 = getArray();
+            if (Array.GetLength(0) != Array2.GetLength(0) || Array.GetLength(1) != Array2.GetLength(1))
+            {
+                Console.WriteLine("Matice nemají shodné rozměry, nelze je sečíst.");
+                EndProgram();
+            }
+            int[,] ArrayR = new int[Array.GetLength(0), Array.GetLength(1)]; //ArrayResult
+            for (int i = 0; i < ArrayR.GetLength(0); i++)
+            {
+                for (int j = 0; j < ArrayR.GetLength(1); j++)
+                {
+                    ArrayR[i, j] = Array[i, j] - Array2[i, j];
+                }
+            }
+            Console.WriteLine("\n\n");
+            writeArray(ArrayR);
+        }
+        static void transposition(int[,]Array)
+        {
+            int[,] ArrayT = new int[Array.GetLength(1),Array.GetLength(0)];
+            
+            for (int i = 0;i < Array.GetLength(0); i++)
+            {
+                for (int j = 0; j < Array.GetLength(1); j++)
+                {
+                    ArrayT[j, i] = Array[i,j];
+                }
+            }
+            writeArray(ArrayT);
+        }
         static void Main(string[] args)
         {
-            Console.WriteLine("Ahoj já jsem domácí úkol na 2D matice"); 
+            Console.WriteLine("Ahoj já jsem domácí úkol na 2D matice. Takže začneme tím, že vytvoříme první matici."); 
             int[,] myArray = getArray();
-            Console.WriteLine("\nTak a teď mi řekni co s tou maticí provedeme\n r) prohodíme dva zadané řádky\n c) prohodíme dva zadané sloupce\n e) prohodíme dva prvky\n d) prohodime prvky na hlavni diagonale\n s) prohodime prvky na vedlejší diagonale\n");
-            char o2 = Convert.ToChar(Console.ReadLine());
-            switch(o2)
+            Console.WriteLine("\nTak a teď mi řekni co s tou maticí provedeme\n r) prohodíme dva zadané řádky\n c) prohodíme dva zadané sloupce\n e) prohodíme dva prvky\n d) prohodime prvky na hlavni diagonale\n s) prohodime prvky na vedlejší diagonale\n t) vynásobíme celou matici zadaným číslem\n g) vynásobíme pouze jeden řádek/sloupec zadaným číslem \n a) sečteme dvě matice dohromady\n q) odečteme dvě matice od sebe\n x) provedeme transpozici (převrácení kolem hlavní diagonály) \n");
+            char o = Convert.ToChar(Console.ReadLine());
+            switch(o)
             {
                 case 'r':
                     switchRows(myArray);
@@ -168,10 +272,29 @@ namespace HwMatice
                 case 's':
                     secondaryDiagonal(myArray);
                     break;
+                
+                case 't':
+                    multiply(myArray);
+                    break;
+                
+                case 'g':
+                    onlyMultiply(myArray);
+                    break;
+
+                case 'a':
+                    addition(myArray);
+                    break;
+                
+                case 'q':
+                    subtraction(myArray);
+                    break;
+                
+                case 'x':
+                    transposition(myArray);
+                    break;
 
                 default:
                     Console.WriteLine("tvá odpověď nebyla v nabídce");
-                    EndProgram();
                     break;
 
             }
