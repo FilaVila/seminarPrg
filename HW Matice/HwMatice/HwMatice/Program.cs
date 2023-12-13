@@ -25,10 +25,10 @@ namespace HwMatice
                 }
             }
         }
-        static int[,] getArray()//funkce vrací v int[,]
+        static int[,] getArray()
         {
             Random rnd = new Random();
-            Console.WriteLine("Takže začneme tím, že vytvoříme matici a*b. Zadej prosím čísla a,b.");
+            Console.WriteLine("Zadej prosím čísla a,b.");
             int a = LoadNumber();
             int b = LoadNumber();
             int [,] HelpArray = new int[a,b];
@@ -72,6 +72,7 @@ namespace HwMatice
         }
         static void writeArray(int[,]Array)//do funkce vkládám int array
         {
+            Console.Write("\n");
             for (int i = 0; i < Array.GetLength(0); i++) //i radky
             {
                 for (int j = 0; j < Array.GetLength(1); j++) //j sloupce
@@ -80,8 +81,9 @@ namespace HwMatice
                 }
                 Console.Write("\n");
             }
+            Console.Write("\n");
         }
-        static void switchRows(int[,]Array)//funkce vezme array
+        static void switchRows(int[,]Array)
         {
             Console.WriteLine("\nA jaké dva řádky chceš prohodit (pamatuj, že v programovaní je 1. řádek 0)?");
             int Row1 = LoadNumber(); //funkce si spustí funkci na načtení integeru
@@ -145,7 +147,11 @@ namespace HwMatice
         static void multiply(int[,]Array)
         {
             Console.WriteLine("Zadej číslo, kterým chceš celu matici vynásobit.\n");
+<<<<<<< HEAD
             int mul = LoadNumber(); //multiplier
+=======
+            int mul = LoadNumber(); //mul jako multiplier
+>>>>>>> 889e3c44c38369e8e6a4489188a0bf3c263fa9bc
             for(int i = 0;i < Array.GetLength(0); i++)
             {
                 for (int j = 0; j < Array.GetLength(0); j++)
@@ -156,7 +162,11 @@ namespace HwMatice
             }
             writeArray(Array);
         }
+<<<<<<< HEAD
         //transpozice matice, převrátit podle hlavní diagonály (osová souměrnost), když je obdélníková matice, tak musím otočit poměry stran(obdélník položím atd)
+=======
+        //transpozice matice = převrátit podle hlavní diagonály (osová souměrnost), když je obdélníková matice, tak musím otočit poměry stran(obdélník položím atd)
+>>>>>>> 889e3c44c38369e8e6a4489188a0bf3c263fa9bc
         static void onlyMultiply(int[,]Array) // násobí pouze jeden řádek nebo sloupec
         {
             Console.WriteLine("Zadej číslo, kterým chceš celý řádek/sloupec vynásobit.\n");
@@ -192,11 +202,94 @@ namespace HwMatice
                     break;
             }
         }
+<<<<<<< HEAD
+=======
+        static void addition(int[,]Array)
+        {
+            Console.WriteLine("Prvně vytvoříme druhou matici se kterou budeme pracovat.\n");
+            int[,] Array2 = getArray();
+            if (Array.GetLength(0) != Array2.GetLength(0) || Array.GetLength(1) != Array2.GetLength(1))
+            {
+                Console.WriteLine("Matice nemají shodné rozměry, nelze je sečíst.");
+                EndProgram();
+            }
+            int[,] ArrayR = new int[Array.GetLength(0), Array.GetLength(1)]; //ArrayResult
+            for (int i = 0; i < ArrayR.GetLength(0); i++)
+            {
+                for (int j = 0; j < ArrayR.GetLength(1); j++)
+                {
+                    ArrayR[i, j] = Array[i, j] + Array2[i, j];
+                }
+            }
+            writeArray(ArrayR );
+        }
+        static void subtraction(int[,]Array)
+        {
+            Console.WriteLine("Prvně vytvoříme druhou matici se kterou budeme pracovat.\n");
+            int[,] Array2 = getArray();
+            if (Array.GetLength(0) != Array2.GetLength(0) || Array.GetLength(1) != Array2.GetLength(1)) //kontroluje jestli mají matice stejné rozměry
+            {
+                Console.WriteLine("Matice nemají shodné rozměry, nelze je sečíst.");
+                EndProgram();
+            }
+            int[,] ArrayR = new int[Array.GetLength(0), Array.GetLength(1)]; //ArrayResult
+            for (int i = 0; i < ArrayR.GetLength(0); i++)
+            {
+                for (int j = 0; j < ArrayR.GetLength(1); j++)
+                {
+                    ArrayR[i, j] = Array[i, j] - Array2[i, j];
+                }
+            }
+            writeArray(ArrayR);
+        }
+        static void transposition(int[,]Array)
+        {
+            int[,] ArrayT = new int[Array.GetLength(1),Array.GetLength(0)];
+            
+            for (int i = 0;i < Array.GetLength(0); i++)
+            {
+                for (int j = 0; j < Array.GetLength(1); j++)
+                {
+                    ArrayT[j, i] = Array[i,j];
+                }
+            }
+            writeArray(ArrayT);
+        }
+        static void MultiplyXXL(int[,]Array) // přesně jsem nevěděl, jak násobení dvou matic funguje, řídil jsem se: https://cs.wikipedia.org/wiki/N%C3%A1soben%C3%AD_matic
+        {
+            Console.WriteLine("Prvně vytvoříme druhou matici se kterou budeme pracovat.\n");
+            int[,] Array2 = getArray();
+            if (Array.GetLength(1) != Array2.GetLength(0))//kontroluje, že počet sloupců v první matici je roven počtu řádků ve druhé
+            {
+                Console.WriteLine("Matice nemají potřebné rozměry, nelze je vynásobit.");
+                EndProgram();
+            }
+            int[,] ArrayR = new int[Array.GetLength(0),Array2.GetLength(1)]; 
+
+            for (int i = 0; i < ArrayR.GetLength(0); i++)
+            {
+                for (int j = 0; j < ArrayR.GetLength(1); j++)
+                {
+                    int sum = 0;
+                    for (int k = 0; k < Array.GetLength(1); k++)
+                    {
+                        sum += Array[i, k] * Array2[k, j];
+                    }
+                    ArrayR[i, j] = sum;
+                }
+            }
+            writeArray(ArrayR);
+        }
+>>>>>>> 889e3c44c38369e8e6a4489188a0bf3c263fa9bc
         static void Main(string[] args)
         {
-            Console.WriteLine("Ahoj já jsem domácí úkol na 2D matice"); 
+            Console.WriteLine("Ahoj já jsem domácí úkol na matice. Takže začneme tím, že vytvoříme první matici."); 
             int[,] myArray = getArray();
+<<<<<<< HEAD
             Console.WriteLine("\nTak a teď mi řekni co s tou maticí provedeme\n r) prohodíme dva zadané řádky\n c) prohodíme dva zadané sloupce\n e) prohodíme dva prvky\n d) prohodime prvky na hlavni diagonale\n s) prohodime prvky na vedlejší diagonale\n t) vynásobíme celou matici zadaným číslem\n g) vynásobíme pouze jeden řádek/sloupec zadaným číslem \n");
+=======
+            Console.WriteLine("\nTak a teď mi řekni co s tou maticí provedeme\n r) prohodíme dva zadané řádky\n c) prohodíme dva zadané sloupce\n e) prohodíme dva prvky\n d) prohodime prvky na hlavni diagonale\n s) prohodime prvky na vedlejší diagonale\n t) vynásobíme celou matici zadaným číslem\n g) vynásobíme pouze jeden řádek/sloupec zadaným číslem \n a) sečteme dvě matice dohromady\n q) odečteme dvě matice od sebe\n x) provedeme transpozici (převrácení kolem hlavní diagonály) \n k) vynásobíme jí s další maticí\n");
+>>>>>>> 889e3c44c38369e8e6a4489188a0bf3c263fa9bc
             char o = Convert.ToChar(Console.ReadLine());
             switch(o)
             {
@@ -227,13 +320,32 @@ namespace HwMatice
                 case 'g':
                     onlyMultiply(myArray);
                     break;
+<<<<<<< HEAD
+=======
+
+                case 'a':
+                    addition(myArray);
+                    break;
+                
+                case 'q':
+                    subtraction(myArray);
+                    break;
+                
+                case 'x':
+                    transposition(myArray);
+                    break;
+                
+                case 'k':
+                    MultiplyXXL(myArray);
+                    break;
+>>>>>>> 889e3c44c38369e8e6a4489188a0bf3c263fa9bc
 
                 default:
                     Console.WriteLine("tvá odpověď nebyla v nabídce");
                     break;
 
             }
-            EndProgram();
+            EndProgram(); //při hledání chyb byl použit ChatGPT
         }
     }
 }
