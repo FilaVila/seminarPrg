@@ -19,6 +19,7 @@ namespace RPG
                     mainCh.LBL(m2);
                     mainCh.Health = mainCh.Health + 10;
                     mainCh.attack = mainCh.attack -1;
+                    mainCh.Stats(mainCh.Health, mainCh.attack);
                     return;
                 case 'B':
                     int a = rnd.Next(1,7);
@@ -27,16 +28,19 @@ namespace RPG
                         string m3 = mainCh.name + " se zachoval jako skutečný hrdina. Dal Longinusovi hrnec přes hlavu a okradl ho o jeho elixíry. (zdraví + 30)\n";
                         mainCh.LBL(m3);
                         mainCh.Health = mainCh.Health + 30;
+                        mainCh.Stats(mainCh.Health, mainCh.attack);
                     }
                     else
                     {
                         string m4 = mainCh.name + " byl přistižen při pokusu o krádež. Když se snažil utéci před rozzuřeným prodavačem lektvarům, praštil se hlavou o futra. (zdraví - 20)\n";
                         mainCh.LBL(m4);
                         mainCh.Health = mainCh.Health -20;
+                        mainCh.Stats(mainCh.Health, mainCh.attack);
                     }
                     return;
                 default:
-                    Console.WriteLine("Při rozmýšlení nad odpovědí jsi dostal mrtvici a zemřel jsi.....trapné");
+                    string dm="Při rozmýšlení nad odpovědí jsi dostal mrtvici a zemřel jsi.....trapné";
+                    mainCh.LBL(dm);
                     mainCh.EndGame();
                     return;
             }  

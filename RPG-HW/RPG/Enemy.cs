@@ -8,6 +8,10 @@ namespace RPG
 {
     internal class Enemy: MainCh
     {
-
+        public void Attack(int attack, MainCh mainCh)
+        {
+            int damage = attack;
+            mainCh.TakeDamage(damage);
+        }
     }
 }
