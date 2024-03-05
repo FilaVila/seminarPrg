@@ -193,7 +193,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(64, 75);
+            this.textBox1.Location = new System.Drawing.Point(101, 73);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(300, 20);
             this.textBox1.TabIndex = 13;
@@ -246,7 +246,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(500, 450);
             this.Controls.Add(this.buttonDeleno);
             this.Controls.Add(this.buttonNas);
             this.Controls.Add(this.buttonMinus);
