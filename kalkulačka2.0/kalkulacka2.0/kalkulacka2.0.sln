@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34024.191
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "kalkulacka2.0", "kalkulacka2.0\kalkulacka2.0.csproj", "{3DD81F68-491F-468E-8F4B-08F9E7467780}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3DD81F68-491F-468E-8F4B-08F9E7467780}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3DD81F68-491F-468E-8F4B-08F9E7467780}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3DD81F68-491F-468E-8F4B-08F9E7467780}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3DD81F68-491F-468E-8F4B-08F9E7467780}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8A39B39A-2FA9-4E74-8036-63FB5FB308B4}
+	EndGlobalSection
+EndGlobal
