@@ -42,7 +42,7 @@ using System.Threading.Tasks;
  * 3) Vytvoř třídu Student, kterou budeme reprezentovat studenta
  *    Přidej třídě Student proměnné - year pro aktuální ročník studenta
  *                                  - id pro identifikační číslo studenta
- *                                  - subjects pro seznam předmětů studenta (bude to slovník (https://www.geeksforgeeks.org/c-sharp-dictionary-with-examples/), který bude mít jako klíč string a jako hodnotu List (https://www.geeksforgeeks.org/c-sharp-list-class/) známek)
+ *                                  - subjects pro seznam předmětů studenta (bude to slovník (https://www.geeksforgeeks.org/c-sharp-dictionary-with-examples/), který bude mít jako klíč string a jako hodnotu List (https://www.geeksforgeeks.org/c-sharp-list-class/) známek) Dictionary<string, List<int>> subjects = new...        subjects["čeština"] = new List<int> { 2, 3, 1 }
  *                                  - name pro jméno studenta
  *    Přidej třídě Student čtyři funkce - AddSubject, která jako vstupní parametr přijme název předmětu a přidá nový klíč do subjects
  *                                      - AddGrade, která jako vstupní parametr přijme název předmětu a známku a přidá podle názvu předmětu další známku danému předmětu
@@ -64,7 +64,7 @@ namespace ClassPlayground
 {
     internal class Program
     {
-        static int getnumber()
+        static int Getnumber()
         {
             int a = Convert.ToInt32(Console.ReadLine());
             return a;
@@ -79,30 +79,48 @@ namespace ClassPlayground
                 case 'a':
                     Console.WriteLine("úloha 1 zadej šířku a výšku");
                     Rectangbluble rectangle1 = new Rectangbluble();
-                    rectangle1.width = getnumber();
-                    rectangle1.height = getnumber();
-                    int obsah = rectangle1.getarea();
-                    float ratio = rectangle1.ratio();
+                    rectangle1.width = Getnumber();
+                    rectangle1.height = Getnumber();
+                    int obsah = rectangle1.Getarea();
+                    float ratio = rectangle1.Ratio();
                     Console.WriteLine("Obsah tohoto obdélníku je " + obsah + " poměr stran je " + ratio);
                     break;
                 
                 case 'b':
-                    Console.WriteLine("úloha dva bankovní účet, číslo účtu je náhodně generované, zadej jméno majitele a měnu, ve které je účet veden, balance je defaultně nula");
+                    Console.WriteLine("úloha 2 bankovní účet, číslo účtu je náhodně generované, zadej jméno majitele a měnu, ve které je účet veden, balance je defaultně nula");
                     BankAccount account1 = new BankAccount();
                     account1.accountNumber = new Random().Next(100000000,1000000000);
                     account1.balance = 0;
                     account1.ownerName = Console.ReadLine();
                     account1.currency = Console.ReadLine();
-                    account1.stats();
+                    account1.Stats();
                     Console.WriteLine("kolik mám na účet poslat z účtu agrofertu");
-                    account1.deposit(getnumber());
-                    account1.stats();
+                    account1.Deposit(Getnumber());
+                    account1.Stats();
                     Console.WriteLine("kolik z účtu mám poslat na účet Gymvodu?");
-                    account1.withdrawn(getnumber());
-                    account1.stats();
+                    account1.Withdrawn(Getnumber());
+                    account1.Stats();
+                    Console.WriteLine(" tak a teď si založíme druhý učet abychom mezi nimi mohli posílat");
+                    BankAccount account2 = new BankAccount();
+                    account2.accountNumber = new Random().Next(100000000, 1000000000);
+                    account2.balance = 0;
+                    account2.ownerName = Console.ReadLine();
+                    account2.currency = Console.ReadLine();
+                    account2.Stats();
+                    Console.WriteLine($"pro jednoduchost půjdou posílat peníze pouze z účtu {account1.accountNumber} na {account2.accountNumber}, zadej kolik chceš převést");
+                    account1.Trasnsfer(Getnumber(), account2 );
+                    account1.Stats();
+                    account2.Stats();
                     break;
                 
                 case 'c':
+                    Console.WriteLine("úloha 3 student, zadej jméno studenta, jeho id a ročník, a přidej předmět");
+                    student newstudent = new student();
+                    newstudent.name = Console.ReadLine();
+                    newstudent.id = Getnumber();
+                    newstudent.year = Getnumber();
+                    newstudent.AddSubject(Console.ReadLine());
+                    Console.WriteLine($"Jméno studenta je {newstudent.name} jeho id je {newstudent.id} je v {newstudent.year}. ročníku ");
                     break;
                 
                 default:

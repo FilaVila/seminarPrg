@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{9AC2498C-AB07-45FD-86B1-B71838A591C4}</ProjectGuid>
+    <ProjectGuid>{984C4DF5-8706-422F-9A2D-149A499BF9CD}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>ClassPlayground</RootNamespace>
-    <AssemblyName>ClassPlayground</AssemblyName>
+    <RootNamespace>DFS</RootNamespace>
+    <AssemblyName>DFS</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,12 +43,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BankAccount.cs" />
-    <Compile Include="Class1%29.cs" />
-    <Compile Include="ClassRectangbluble.cs" />
+    <Compile Include="BinaryTree.cs" />
+    <Compile Include="Node.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="student.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

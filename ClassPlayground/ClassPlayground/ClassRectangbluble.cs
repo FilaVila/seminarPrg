@@ -11,13 +11,13 @@ namespace ClassPlayground
         public int width;
         public int height;
 
-        public int getarea ()
+        public int Getarea ()
         { 
             int area = width * height;
             return area;
         }
 
-        public float ratio() 
+        public float Ratio() 
         {
             float ratio = height / width;
             return ratio;

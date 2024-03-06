@@ -14,20 +14,32 @@ namespace ClassPlayground
         public string currency;
         public int balance;
 
-        public void stats()
+        public void Stats()
         {
             Console.WriteLine($"Účet je veden na {ownerName} je veden v měně: {currency} číslo účtu je {accountNumber} a zůstatek je {balance}");
         }
 
-        public void deposit(int x)
+        public void Deposit(int x)
         {
             balance = balance + x;
         }
 
-        public void withdrawn(int x)
+        public void Withdrawn(int x)
         {
             balance = balance - x;
         }
+        public void Trasnsfer (int amount, BankAccount otherAccount)
+        {
+            if (amount <= balance)
+            {
+                balance -= amount;
+                otherAccount.balance += balance;
+            }
+            else
+            {
+                Console.WriteLine("u brokie");
+            }
 
+        }
     }
 }
