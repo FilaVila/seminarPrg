@@ -69,7 +69,7 @@ namespace malovani
         private void buttonNew_Click(object sender, EventArgs e)
         {
             SolidBrush brushClear = new SolidBrush((Color)Color.White);
-            graphics.FillRectangle(brushClear, 0, 0, 467, 531);
+            graphics.FillRectangle(brushClear, 0, 0, panel1.Width, panel1.Height);
         }
     }
 }

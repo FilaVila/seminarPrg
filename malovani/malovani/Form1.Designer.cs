@@ -99,11 +99,11 @@
             // 
             // buttonEraser
             // 
+            this.buttonEraser.Image = global::malovani.Properties.Resources.eraser;
             this.buttonEraser.Location = new System.Drawing.Point(755, 110);
             this.buttonEraser.Name = "buttonEraser";
             this.buttonEraser.Size = new System.Drawing.Size(76, 65);
             this.buttonEraser.TabIndex = 4;
-            this.buttonEraser.Text = "Guma";
             this.buttonEraser.UseVisualStyleBackColor = true;
             // 
             // buttonSpray
