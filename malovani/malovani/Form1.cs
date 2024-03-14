@@ -23,7 +23,7 @@ namespace malovani
             InitializeComponent();
             graphics = panel1.CreateGraphics();
             graphics.SmoothingMode =System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            pen = new Pen(Color.Black, 5);
+            pen = new Pen(Color.Black, 5); //abych mohl použít pen.StartCap musím prvně definovat jakékoliv Pen
             pen.StartCap = pen.EndCap = System.Drawing.Drawing2D.LineCap.Round; //převzato z oficiální microsoft podpory
         }
 
@@ -64,6 +64,12 @@ namespace malovani
                 x = e.X;
                 y = e.Y;
             }
+        }
+
+        private void buttonNew_Click(object sender, EventArgs e)
+        {
+            SolidBrush brushClear = new SolidBrush((Color)Color.White);
+            graphics.FillRectangle(brushClear, 0, 0, 467, 531);
         }
     }
 }
