@@ -89,5 +89,29 @@
   <ItemGroup>
     <None Include="Resources\eraser.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pencil.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pencil-removebg-preview.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pencil-png-653.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pencil-png-653 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Paint-Brush-Free-Download-PNG %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Fountain_Pen_Head %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\spray-can-png-28843 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pngegg.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
