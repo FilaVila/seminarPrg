@@ -31,6 +31,7 @@ namespace malovani
         }
         public void SliderSet(Pen pen) //každý štětec má předpřipravenou tloušťku, když si ho vyberu tak se trackBar společne s textboxem nastaví na tuto hodnotu
         {
+            trackBarSize.Enabled = true;
             trackBarSize.Value = Convert.ToInt32(pen.Width);
             textBoxSize.Text = trackBarSize.Value.ToString() + " px";
         }
@@ -41,11 +42,6 @@ namespace malovani
             brush.Color = color;
             pictureBoxCheck.BackColor = color;
         }
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
         private void panel1_MouseDown(object sender, MouseEventArgs e) //funkce zjistí jestli vdržím LTM a zjistí polohu kurzoru
         {
             MouseACtive = true; 
@@ -59,11 +55,6 @@ namespace malovani
             x = 0;
             y = 0;
         }
-        private void panel1_Move(object sender, EventArgs e) //nepoužívat
-        {
-
-        }
-
         private void panel1_MouseMove(object sender, MouseEventArgs e) //this is where the magic happens
         {
             if (MouseACtive && x!=0 &&y!=0)
@@ -83,17 +74,50 @@ namespace malovani
                         x = e.X;
                         y = e.Y;
                         break;
+                    case 'B':
+                        Pen PaintingB = new Pen(Color.FromArgb(17,pictureBoxCheck.BackColor),pen.Width); //definoval jsem nový štětec, který je transparentní, Alpha = 17
+                        PaintingB.StartCap = PaintingB.EndCap = System.Drawing.Drawing2D.LineCap.Round;
+                        graphics.DrawLine(PaintingB, new Point(x, y), e.Location);
+                        x = e.X;
+                        y = e.Y;
+                        break;
+                    case 'C': //zde pomohl ChatGpt                    
+                        double distance = Math.Sqrt(Math.Pow(e.X - x, 2) + Math.Pow(e.Y - y, 2)); //pythagorova věta, spočítá vzdálenost mezi poseldníma bodama 
+                        double speed = distance/pen.Width; // simuluje rychlost
+                        float CWidth =(float)(pen.Width/speed);//čím pomalejší tím širší
+                        Pen Cpen = new Pen(pen.Color, CWidth);
+                        Cpen.StartCap = Cpen.EndCap = System.Drawing.Drawing2D.LineCap.Round;
+                        graphics.DrawLine(Cpen, new Point(x, y), e.Location);
+                        x = e.X;
+                        y = e.Y;
+                        break;
+                    case 'D':
+                        int off2 = Convert.ToInt32(pen.Width);
+                        Pen CrayonOut = new Pen(Color.FromArgb(3, pictureBoxCheck.BackColor), pen.Width*2);//štětec + tužka = voskovka
+                        CrayonOut.StartCap = CrayonOut.EndCap = System.Drawing.Drawing2D.LineCap.Round;
+                        for (int i = -off2; i < off2; i++)
+                        {
+                            graphics.DrawLine(pen, x,y, e.X +1,e.Y+i);
+                            //graphics.DrawLine(CrayonOut, new Point(x, y), e.Location);
+                            x = e.X;
+                            y = e.Y;
+                        }                        
+                        break;
+                    case 'E':
+                        int off = Convert.ToInt32(pen.Width);
+                        int eS = rnd.Next(1, off/2);//poměry of jsou pokus omyl
+                        graphics.FillEllipse(brush, e.X + rnd.Next(off,off*2), e.Y + rnd.Next(off, off*2),eS,eS); //malé kruhy náhodně od pozice
+                        break;
                     default:
 
                         break;
                 }
             }
         }
-
         private void buttonNew_Click(object sender, EventArgs e)
         {
             SolidBrush brushClear = new SolidBrush((Color)Color.White);
-            graphics.FillRectangle(brushClear, -1, -1, panel1.Width, panel1.Height);
+            graphics.FillRectangle(brushClear, -1, -1, panel1.Width+1, panel1.Height+1);
         }
 
         private void pictureBoxRainbow_Click(object sender, EventArgs e)
@@ -135,24 +159,6 @@ namespace malovani
         {
             SetColor(Color.Red);
         }
-
-        private void buttonEraser_Click(object sender, EventArgs e)
-        {
-            SetColor(Color.White);
-            
-        }
-
-        private void trackBarSize_Scroll(object sender, EventArgs e) //mimochodem když používám slider tak se mění kurzor na ručičku
-        {
-            textBoxSize.Text = trackBarSize.Value.ToString() + " px";
-            pen.Width = trackBarSize.Value;
-            
-        }
-
-        private void textBoxSize_TextChanged(object sender, EventArgs e) //nešahat
-        {
-
-        }
         private void buttonPencil_Click(object sender, EventArgs e)
         {
             tool = 'A';
@@ -164,21 +170,48 @@ namespace malovani
         private void buttonBrush_Click(object sender, EventArgs e)
         {
             tool = 'B';
+            pen.Width = 20;
+            SliderSet(pen);
         }
-
         private void buttonPen_Click(object sender, EventArgs e)
         {
             tool = 'C';
-        }
+            pen.Width = 3;
+            trackBarSize.Enabled = false; //efekt není nad 3px vidět
+            textBoxSize.Text = "ʕ•ᴥ•ʔ";
 
+        }
         private void buttonVoskovka_Click(object sender, EventArgs e)
         {
             tool = 'D';
         }
-
         private void buttonSpray_Click(object sender, EventArgs e)
         {
             tool = 'E';
+        }
+        private void buttonEraser_Click(object sender, EventArgs e)
+        {
+            SetColor(Color.White);
+            pen.Width = 5;
+            SliderSet(pen);
+        }
+        private void trackBarSize_Scroll(object sender, EventArgs e) //mimochodem když používám slider tak se mění kurzor na ručičku
+        {
+            textBoxSize.Text = trackBarSize.Value.ToString() + " px";
+            pen.Width = trackBarSize.Value;
+
+        }
+        private void textBoxSize_TextChanged(object sender, EventArgs e) //nešahat
+        {
+
+        }
+        private void panel1_Move(object sender, EventArgs e)
+        {
+
+        }
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
