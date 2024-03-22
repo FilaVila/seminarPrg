@@ -31,11 +31,6 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.buttonNew = new System.Windows.Forms.Button();
             this.panelColors = new System.Windows.Forms.Panel();
-            this.panelCheck = new System.Windows.Forms.Panel();
-            this.trackBarSize = new System.Windows.Forms.TrackBar();
-            this.textBoxSize = new System.Windows.Forms.TextBox();
-            this.labelSize = new System.Windows.Forms.Label();
-            this.pictureBoxCheck = new System.Windows.Forms.PictureBox();
             this.pictureBoxRainbow = new System.Windows.Forms.PictureBox();
             this.pictureBoxGray = new System.Windows.Forms.PictureBox();
             this.pictureBoxPink = new System.Windows.Forms.PictureBox();
@@ -44,6 +39,11 @@
             this.pictureBoxGreen = new System.Windows.Forms.PictureBox();
             this.pictureBoxBlue = new System.Windows.Forms.PictureBox();
             this.pictureBoxRed = new System.Windows.Forms.PictureBox();
+            this.panelCheck = new System.Windows.Forms.Panel();
+            this.pictureBoxCheck = new System.Windows.Forms.PictureBox();
+            this.trackBarSize = new System.Windows.Forms.TrackBar();
+            this.textBoxSize = new System.Windows.Forms.TextBox();
+            this.labelSize = new System.Windows.Forms.Label();
             this.buttonVoskovka = new System.Windows.Forms.Button();
             this.buttonSpray = new System.Windows.Forms.Button();
             this.buttonEraser = new System.Windows.Forms.Button();
@@ -51,9 +51,6 @@
             this.buttonBrush = new System.Windows.Forms.Button();
             this.buttonPencil = new System.Windows.Forms.Button();
             this.panelColors.SuspendLayout();
-            this.panelCheck.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarSize)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCheck)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRainbow)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGray)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPink)).BeginInit();
@@ -62,6 +59,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGreen)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBlue)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRed)).BeginInit();
+            this.panelCheck.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCheck)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarSize)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -103,57 +103,6 @@
             this.panelColors.Name = "panelColors";
             this.panelColors.Size = new System.Drawing.Size(274, 131);
             this.panelColors.TabIndex = 8;
-            // 
-            // panelCheck
-            // 
-            this.panelCheck.BackColor = System.Drawing.Color.White;
-            this.panelCheck.Controls.Add(this.pictureBoxCheck);
-            this.panelCheck.Location = new System.Drawing.Point(491, 222);
-            this.panelCheck.Name = "panelCheck";
-            this.panelCheck.Size = new System.Drawing.Size(60, 60);
-            this.panelCheck.TabIndex = 9;
-            // 
-            // trackBarSize
-            // 
-            this.trackBarSize.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.trackBarSize.Location = new System.Drawing.Point(557, 417);
-            this.trackBarSize.Maximum = 50;
-            this.trackBarSize.Minimum = 3;
-            this.trackBarSize.Name = "trackBarSize";
-            this.trackBarSize.Size = new System.Drawing.Size(274, 45);
-            this.trackBarSize.SmallChange = 3;
-            this.trackBarSize.TabIndex = 10;
-            this.trackBarSize.Value = 3;
-            this.trackBarSize.Scroll += new System.EventHandler(this.trackBarSize_Scroll);
-            // 
-            // textBoxSize
-            // 
-            this.textBoxSize.Location = new System.Drawing.Point(703, 375);
-            this.textBoxSize.Name = "textBoxSize";
-            this.textBoxSize.Size = new System.Drawing.Size(57, 20);
-            this.textBoxSize.TabIndex = 11;
-            this.textBoxSize.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.textBoxSize.TextChanged += new System.EventHandler(this.textBoxSize_TextChanged);
-            // 
-            // labelSize
-            // 
-            this.labelSize.AutoSize = true;
-            this.labelSize.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelSize.Location = new System.Drawing.Point(603, 370);
-            this.labelSize.Name = "labelSize";
-            this.labelSize.Size = new System.Drawing.Size(94, 25);
-            this.labelSize.TabIndex = 12;
-            this.labelSize.Text = "Tloušťka:";
-            // 
-            // pictureBoxCheck
-            // 
-            this.pictureBoxCheck.BackColor = System.Drawing.Color.Black;
-            this.pictureBoxCheck.Location = new System.Drawing.Point(10, 9);
-            this.pictureBoxCheck.Margin = new System.Windows.Forms.Padding(0);
-            this.pictureBoxCheck.Name = "pictureBoxCheck";
-            this.pictureBoxCheck.Size = new System.Drawing.Size(40, 40);
-            this.pictureBoxCheck.TabIndex = 0;
-            this.pictureBoxCheck.TabStop = false;
             // 
             // pictureBoxRainbow
             // 
@@ -235,6 +184,57 @@
             this.pictureBoxRed.TabStop = false;
             this.pictureBoxRed.Click += new System.EventHandler(this.pictureBoxRed_Click);
             // 
+            // panelCheck
+            // 
+            this.panelCheck.BackColor = System.Drawing.Color.White;
+            this.panelCheck.Controls.Add(this.pictureBoxCheck);
+            this.panelCheck.Location = new System.Drawing.Point(491, 222);
+            this.panelCheck.Name = "panelCheck";
+            this.panelCheck.Size = new System.Drawing.Size(60, 60);
+            this.panelCheck.TabIndex = 9;
+            // 
+            // pictureBoxCheck
+            // 
+            this.pictureBoxCheck.BackColor = System.Drawing.Color.Black;
+            this.pictureBoxCheck.Location = new System.Drawing.Point(10, 9);
+            this.pictureBoxCheck.Margin = new System.Windows.Forms.Padding(0);
+            this.pictureBoxCheck.Name = "pictureBoxCheck";
+            this.pictureBoxCheck.Size = new System.Drawing.Size(40, 40);
+            this.pictureBoxCheck.TabIndex = 0;
+            this.pictureBoxCheck.TabStop = false;
+            // 
+            // trackBarSize
+            // 
+            this.trackBarSize.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.trackBarSize.Location = new System.Drawing.Point(557, 417);
+            this.trackBarSize.Maximum = 50;
+            this.trackBarSize.Minimum = 3;
+            this.trackBarSize.Name = "trackBarSize";
+            this.trackBarSize.Size = new System.Drawing.Size(274, 45);
+            this.trackBarSize.SmallChange = 3;
+            this.trackBarSize.TabIndex = 10;
+            this.trackBarSize.Value = 3;
+            this.trackBarSize.Scroll += new System.EventHandler(this.trackBarSize_Scroll);
+            // 
+            // textBoxSize
+            // 
+            this.textBoxSize.Location = new System.Drawing.Point(703, 375);
+            this.textBoxSize.Name = "textBoxSize";
+            this.textBoxSize.Size = new System.Drawing.Size(57, 20);
+            this.textBoxSize.TabIndex = 11;
+            this.textBoxSize.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxSize.TextChanged += new System.EventHandler(this.textBoxSize_TextChanged);
+            // 
+            // labelSize
+            // 
+            this.labelSize.AutoSize = true;
+            this.labelSize.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.labelSize.Location = new System.Drawing.Point(603, 370);
+            this.labelSize.Name = "labelSize";
+            this.labelSize.Size = new System.Drawing.Size(94, 25);
+            this.labelSize.TabIndex = 12;
+            this.labelSize.Text = "Tloušťka:";
+            // 
             // buttonVoskovka
             // 
             this.buttonVoskovka.Image = global::malovani.Properties.Resources.pngegg;
@@ -300,7 +300,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.ClientSize = new System.Drawing.Size(859, 651);
+            this.ClientSize = new System.Drawing.Size(846, 647);
             this.Controls.Add(this.labelSize);
             this.Controls.Add(this.textBoxSize);
             this.Controls.Add(this.trackBarSize);
@@ -317,9 +317,6 @@
             this.Name = "Form1";
             this.Text = "Form1";
             this.panelColors.ResumeLayout(false);
-            this.panelCheck.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarSize)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCheck)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRainbow)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGray)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPink)).EndInit();
@@ -328,6 +325,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGreen)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBlue)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRed)).EndInit();
+            this.panelCheck.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCheck)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarSize)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
