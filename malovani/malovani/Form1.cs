@@ -75,13 +75,13 @@ namespace malovani
                         y = e.Y;
                         break;
                     case 'B':
-                        Pen PaintingB = new Pen(Color.FromArgb(17,pictureBoxCheck.BackColor),pen.Width); //definoval jsem nový štětec, který je transparentní, Alpha = 17
+                        Pen PaintingB = new Pen(Color.FromArgb(17,pen.Color),pen.Width); //definoval jsem nový štětec, který je transparentní, Alpha = 17
                         PaintingB.StartCap = PaintingB.EndCap = System.Drawing.Drawing2D.LineCap.Round;
                         graphics.DrawLine(PaintingB, new Point(x, y), e.Location);
                         x = e.X;
                         y = e.Y;
                         break;
-                    case 'C': //zde pomohl ChatGpt                    
+                    case 'C': //zde pomohl ChatGpt s výpočtem vzdálenosti                    
                         double distance = Math.Sqrt(Math.Pow(e.X - x, 2) + Math.Pow(e.Y - y, 2)); //pythagorova věta, spočítá vzdálenost mezi poseldníma bodama 
                         double speed = distance/pen.Width; // simuluje rychlost
                         float CWidth =(float)(pen.Width/speed);//čím pomalejší tím širší
@@ -92,16 +92,15 @@ namespace malovani
                         y = e.Y;
                         break;
                     case 'D':
-                        int off2 = Convert.ToInt32(pen.Width);
-                        Pen CrayonOut = new Pen(Color.FromArgb(3, pictureBoxCheck.BackColor), pen.Width*2);//štětec + tužka = voskovka
-                        CrayonOut.StartCap = CrayonOut.EndCap = System.Drawing.Drawing2D.LineCap.Round;
-                        for (int i = -off2; i < off2; i++)
+                        int CrWidth = Convert.ToInt32(pen.Width);
+                        Pen Crayon = new Pen(Color.FromArgb(9,pen.Color), CrWidth+rnd.Next(-5,5));
+                        Crayon.StartCap = Crayon.EndCap = System.Drawing.Drawing2D.LineCap.Round;
+                        for (int i = -CrWidth/2; i < CrWidth/2; i++)
                         {
-                            graphics.DrawLine(pen, x,y, e.X +1,e.Y+i);
-                            //graphics.DrawLine(CrayonOut, new Point(x, y), e.Location);
-                            x = e.X;
-                            y = e.Y;
-                        }                        
+                            graphics.DrawLine(Crayon, x, y, e.X + 1, e.Y + i);                          
+                        }
+                        x = e.X;
+                        y = e.Y;
                         break;
                     case 'E':
                         int off = Convert.ToInt32(pen.Width);
@@ -177,6 +176,7 @@ namespace malovani
         {
             tool = 'C';
             pen.Width = 3;
+            SetColor(Color.FromArgb(51,0,102));
             trackBarSize.Enabled = false; //efekt není nad 3px vidět
             textBoxSize.Text = "ʕ•ᴥ•ʔ";
 
@@ -188,6 +188,8 @@ namespace malovani
         private void buttonSpray_Click(object sender, EventArgs e)
         {
             tool = 'E';
+            pen.Width= 10;
+            SliderSet(pen);
         }
         private void buttonEraser_Click(object sender, EventArgs e)
         {
