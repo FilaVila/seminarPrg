@@ -93,6 +93,16 @@ namespace malovani.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap hiclipart_com__1_ {
+            get {
+                object obj = ResourceManager.GetObject("hiclipart_com__1_", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Paint_Brush_Free_Download_PNG__1_ {
             get {
                 object obj = ResourceManager.GetObject("Paint_Brush_Free_Download_PNG__1_", resourceCulture);
@@ -116,6 +126,16 @@ namespace malovani.Properties {
         internal static System.Drawing.Bitmap pngegg {
             get {
                 object obj = ResourceManager.GetObject("pngegg", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap rectangle {
+            get {
+                object obj = ResourceManager.GetObject("rectangle", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

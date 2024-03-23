@@ -16,6 +16,12 @@ namespace malovani
         bool RainbowActiv;
         int x;
         int y;
+        int x2; //počáteční bod obrazců
+        int y2;
+        int g=0;
+        int w; //šířka a výška obrazců
+        int h;
+        char obj;
         char tool = 'A';
         Random rnd = new Random();
         Graphics graphics;
@@ -42,11 +48,17 @@ namespace malovani
             brush.Color = color;
             pictureBoxCheck.BackColor = color;
         }
-        private void panel1_MouseDown(object sender, MouseEventArgs e) //funkce zjistí jestli vdržím LTM a zjistí polohu kurzoru
+        private void panel1_MouseDown(object sender, MouseEventArgs e) //funkce zjistí jestli držím LTM a zjistí polohu kurzoru
         {
             MouseACtive = true; 
             x = e.X;
             y = e.Y;
+            if (g == 1)
+            {
+                x2 = e.X;
+                y2 = e.Y;
+                textBoxPB.Text = x2.ToString() + ";" + y2.ToString();
+            }
         }
 
         private void panel1_MouseUp(object sender, MouseEventArgs e)
@@ -82,7 +94,7 @@ namespace malovani
                         y = e.Y;
                         break;
                     case 'C': //zde pomohl ChatGpt s výpočtem vzdálenosti                    
-                        double distance = Math.Sqrt(Math.Pow(e.X - x, 2) + Math.Pow(e.Y - y, 2)); //pythagorova věta, spočítá vzdálenost mezi poseldníma bodama 
+                        double distance = Math.Sqrt(Math.Pow(e.X - x, 2) + Math.Pow(e.Y - y, 2));
                         double speed = distance/pen.Width; // simuluje rychlost
                         float CWidth =(float)(pen.Width/speed);//čím pomalejší tím širší
                         Pen Cpen = new Pen(pen.Color, CWidth);
@@ -202,6 +214,46 @@ namespace malovani
             textBoxSize.Text = trackBarSize.Value.ToString() + " px";
             pen.Width = trackBarSize.Value;
 
+        }        
+        private void buttonEllipse_Click(object sender, EventArgs e)
+        {
+            g = 1;
+            obj = 'E';
+
+        }
+
+        private void buttonRectangle_Click(object sender, EventArgs e)
+        {
+            g = 1;
+            obj = 'R';
+        }
+
+        private void buttonPaint_Click(object sender, EventArgs e)
+        {
+            g = 0;
+            textBoxPB.Text = "";
+            h = Convert.ToInt32(textBoxVyska.Text);
+            w = Convert.ToInt32(textBoxSirka.Text);
+
+            switch (obj)
+            {
+                case 'E':
+                    graphics.DrawEllipse(pen, x2-w/2, y2-h/2, w, h);
+                    if (checkBoxFill.Checked)
+                    {
+                        graphics.FillEllipse(brush, x2 - w/2, y2 - h / 2, w, h);
+                    }
+                    break;
+                case 'R':
+                    graphics.DrawRectangle(pen, x2 - w/2, y2 - h / 2, w, h);
+                    if (checkBoxFill.Checked)
+                    {
+                        graphics.FillEllipse(brush, x2 - w/2, y2 - h / 2, w, h);
+                    }
+                    break;
+                default:
+                    break;
+            }
         }
         private void textBoxSize_TextChanged(object sender, EventArgs e) //nešahat
         {
@@ -212,6 +264,10 @@ namespace malovani
 
         }
         private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+        private void panel1_Click(object sender, EventArgs e)
         {
 
         }
